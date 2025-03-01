@@ -1,0 +1,110 @@
+/* Global Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F7FAFC;
+    color: #1A365D;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background: linear-gradient(to right, rgba(26, 54, 93, 0.9), rgba(56, 178, 172, 0.8));
+    color: white;
+}
+.hero-left img {
+    width: 200px;
+    border-radius: 50%;
+}
+.hero-right h1 {
+    font-size: 36px;
+}
+.hero-right p {
+    font-size: 18px;
+}
+
+/* About Section */
+.about {
+    text-align: center;
+    padding: 50px;
+}
+.timeline img {
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Experience Section */
+.experience {
+    padding: 50px;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+.career-timeline img {
+    width: 150px;
+    margin: 10px;
+}
+
+/* Skills Section */
+.skills {
+    padding: 50px;
+    text-align: center;
+    background-color: #F7FAFC;
+}
+.skills-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.skill {
+    background: #1A365D;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+/* Contact Section */
+.contact {
+    text-align: center;
+    padding: 50px;
+    background-color: #FFFFFF;
+}
+.contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+}
+.contact input, .contact textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #1A365D;
+    border-radius: 5px;
+}
+.contact button {
+    background: #38B2AC;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-left img {
+        width: 150px;
+    }
+}
