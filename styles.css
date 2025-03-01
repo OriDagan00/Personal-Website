@@ -16,11 +16,13 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+/* Prevent horizontal scroll/gap on mobile */
+html,
 body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   font-family: 'Open Sans', sans-serif;
   background-color: var(--bg-offwhite);
   color: var(--primary);
@@ -268,50 +270,55 @@ nav {
   background-color: var(--bg-offwhite);
 }
 
+/* The container for all timeline items */
 .experience-timeline {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
+/* Each experience item (text on left, photo on right on larger screens) */
 .timeline-item {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  background-color: var(--bg-white);
-  padding: 1rem;
+  flex-direction: row;
   border: 1px solid var(--secondary);
   border-radius: 4px;
-  transition: transform 0.3s ease;
+  overflow: hidden; /* keeps image & text neatly within the box */
 }
 
-.timeline-item:hover {
-  transform: translateY(-5px);
+/* The text side */
+.timeline-text {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* top-align text */
 }
 
 .timeline-logo img {
-  width: 60px;
-  max-height: 60px;
-  transition: transform 0.3s ease;
+  width: 50px;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
-.timeline-details h3 {
-  font-size: 1.25rem;
-}
-
-.timeline-details .timeline-date {
-  font-size: 0.9rem;
+.timeline-date {
+  display: block;
+  margin-bottom: 1rem;
   color: var(--secondary);
+  font-size: 0.9rem;
 }
 
-.exp-photo {
-  margin-top: 1rem;
+/* The photo side */
+.timeline-photo {
+  flex: 0 0 300px; /* fixed width for the photo on desktop */
+  position: relative;
 }
 
-.military-image {
+.timeline-photo img {
   width: 100%;
-  max-width: 400px;
-  border-radius: 4px;
+  height: 100%;
+  object-fit: cover; /* ensures the image fills the entire box vertically */
+  display: block;
 }
 
 /* Skills Section */
@@ -327,29 +334,52 @@ nav {
   align-items: center;
 }
 
-.skills-chart {
-  max-width: 300px;
-}
-
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1rem;
+/* Skills List */
+.skills-list {
+  list-style: none;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
 }
 
-.tool-item {
-  text-align: center;
-  padding: 0.5rem;
-  background-color: var(--bg-offwhite);
+.skill-item {
   border: 1px solid var(--secondary);
   border-radius: 4px;
-  transition: transform 0.3s ease;
+  margin-bottom: 1rem;
+  overflow: hidden;
 }
 
-.tool-item:hover {
-  transform: scale(1.05);
+.skill-toggle {
+  width: 100%;
+  background: var(--bg-white);
+  color: var(--primary);
+  padding: 0.75rem 1rem;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-toggle:hover {
+  background-color: var(--bg-offwhite);
+}
+
+.skill-arrow {
+  margin-left: 0.5rem;
+  font-weight: bold;
+}
+
+.skill-description {
+  background-color: var(--bg-offwhite);
+  padding: 0.75rem 1rem;
+}
+
+.skill-description p {
+  margin: 0;
 }
 
 /* Certifications */
@@ -481,7 +511,8 @@ footer {
   transform: translateY(0);
 }
 
-/* Responsive Breakpoints */
+/* ----------------- Responsive Breakpoints ----------------- */
+
 /* Tablet (min-width: 768px) */
 @media (min-width: 768px) {
   .hero-content {
@@ -490,7 +521,8 @@ footer {
   #hero {
     height: 100vh;
   }
-  .hero-image, .hero-text {
+  .hero-image,
+  .hero-text {
     flex: 1;
   }
   .intro-container {
@@ -516,106 +548,21 @@ footer {
   }
 }
 
-/* --- New/Updated CSS for Skills List --- */
-
-/* Remove if you want to clean up references:
-   .skills-chart { ... }
-   .tools-grid { ... }
-*/
-
-/* Styles for the new skills list */
-.skills-list {
-  list-style: none;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0;
+/* Mobile adjustments (max-width: 767px)
+   to stack Experience text & photo vertically 
+   so the image is fully visible without horizontal scrolling */
+@media (max-width: 767px) {
+  .timeline-item {
+    flex-direction: column;
+  }
+  .timeline-photo {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .timeline-photo img {
+    width: 100%;
+    height: auto; /* let image scale naturally */
+    object-fit: cover;
+  }
 }
-
-.skill-item {
-  border: 1px solid var(--secondary);
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  overflow: hidden; /* ensures hidden content is not visible when collapsed */
-}
-
-.skill-toggle {
-  width: 100%;
-  background: var(--bg-white);
-  color: var(--primary);
-  padding: 0.75rem 1rem;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  font-size: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.skill-toggle:hover {
-  background-color: var(--bg-offwhite);
-}
-
-.skill-arrow {
-  margin-left: 0.5rem;
-  font-weight: bold;
-}
-
-.skill-description {
-  background-color: var(--bg-offwhite);
-  padding: 0.75rem 1rem;
-}
-
-.skill-description p {
-  margin: 0;
-}
-/* Updated Experience Section Layout */
-.experience-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem; /* spacing between items */
-}
-
-.timeline-item {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid var(--secondary);
-  border-radius: 4px;
-  overflow: hidden; /* keeps image & text neatly within the box */
-}
-
-.timeline-text {
-  flex: 1;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  /* remove justify-content: center; so text aligns at top */
-  justify-content: flex-start; /* or just remove this line if you prefer default top alignment */
-}
-
-.timeline-logo img {
-  width: 50px;
-  height: auto;
-  margin-bottom: 1rem;
-}
-
-.timeline-date {
-  display: block;
-  margin-bottom: 1rem;
-  color: var(--secondary);
-  font-size: 0.9rem;
-}
-
-.timeline-photo {
-  flex: 0 0 300px; /* fixed width for the photo column */
-  position: relative;
-}
-
-.timeline-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* ensures the image fills the entire box vertically */
-  display: block;
-}
-
