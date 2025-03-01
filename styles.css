@@ -548,7 +548,7 @@ footer {
   }
 }
 
-/* Mobile (max-width: 767px) */
+/* MOBILE STYLES (max-width: 767px) */
 @media (max-width: 767px) {
   /* Hide entire header (including menu) on mobile */
   header {
@@ -557,41 +557,61 @@ footer {
 
   /* Make hero fill the viewport height on mobile */
   #hero {
-    height: 100vh;
     position: relative;
+    width: 100%;
+    height: 100vh; /* ensures it fills the screen initially */
+    overflow: hidden; /* no horizontal scroll */
   }
 
-  /* Stack hero content but keep the image filling the background */
+  /* Let hero-content become a column for text + arrow, 
+     while the image is positioned behind it */
   .hero-content {
-    flex-direction: column;
+    position: relative;
+    width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* vertically center text & arrow */
   }
 
+  /* Position the hero image absolutely so it fills the background */
   .hero-image {
-    flex: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
   }
 
-  /* Absolutely center the hero text */
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Center the hero text in front of the image */
   .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    z-index: 1; /* above the image */
     max-width: 90%;
+    text-align: center;
+    color: var(--bg-white);
+    margin: 0 auto;
+    /* If you want vertical spacing above the text, add margin-top */
+  }
+
+  /* Place scroll arrow below the text in the same column flow */
+  .scroll-indicator {
+    position: relative;
+    z-index: 1; /* above the image */
+    margin-top: 1rem; /* some space below text */
+    display: block;
     text-align: center;
   }
 
-  /* Move scroll indicator below the text, also centered */
-  .scroll-indicator {
-    position: absolute;
-    left: 50%;
-    bottom: 2rem;
-    transform: translateX(-50%);
-    margin: 0; /* remove default margin so it's truly centered */
-    display: inline-block;
-  }
-
-  /* Experience section stacks text & photo vertically */
+  /* Stack Experience text & photo vertically so the entire photo is visible */
   .timeline-item {
     flex-direction: column;
   }
@@ -606,4 +626,3 @@ footer {
     object-fit: cover;
   }
 }
-
