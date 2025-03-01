@@ -1,18 +1,14 @@
 /* script.js */
-
-/**
- * DOMContentLoaded ensures that the script runs after the DOM is fully loaded.
- */
 document.addEventListener('DOMContentLoaded', function () {
-  /* IntersectionObserver for scroll-triggered animations.
-     Elements with the 'animate-on-scroll' class will receive the 'in-view' class when visible.
-  */
+  /**
+   * Scroll-triggered animations with IntersectionObserver
+   */
   const observerOptions = { threshold: 0.1 };
-  const observer = new IntersectionObserver((entries, observer) => {
+  const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     });
   }, observerOptions);
@@ -21,10 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
     observer.observe(el);
   });
 
-  // Copy Email to Clipboard Functionality
+  /**
+   * Copy Email to Clipboard
+   */
   const copyButton = document.getElementById('copyEmail');
   if (copyButton) {
-    copyButton.addEventListener('click', function () {
+    copyButton.addEventListener('click', () => {
       const emailText = document.getElementById('emailCopy').innerText;
       navigator.clipboard.writeText(emailText)
         .then(() => {
@@ -37,7 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Smooth scroll indicator click event to scroll to the Introduction section
+  /**
+   * Scroll Indicator - scroll to Intro Section
+   */
   const scrollIndicator = document.querySelector('.scroll-indicator');
   if (scrollIndicator) {
     scrollIndicator.addEventListener('click', () => {
@@ -48,53 +48,56 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Form submission tracking (for analytics)
+  /**
+   * Form Submission Tracking (Google Analytics event example)
+   */
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      // Example: Track form submission with Google Analytics event
+    contactForm.addEventListener('submit', function () {
       if (window.gtag) {
         gtag('event', 'contact_form_submission', {
-          'event_category': 'Contact',
-          'event_label': 'Contact Form'
+          event_category: 'Contact',
+          event_label: 'Contact Form'
         });
       }
-      // The form submission is handled via mailto
+      // The form is sent via mailto, so no additional JS handling is required
     });
   }
 
-  // Example: Parallax effect for Military Service Photo (if applicable)
-  const militaryImage = document.querySelector('.military .timeline-item img');
-  if (militaryImage) {
-    window.addEventListener('scroll', function () {
-      const scrolled = window.pageYOffset;
-      militaryImage.style.transform = 'translateY(' + scrolled * 0.1 + 'px)';
-    });
-  }
-
-  // Initialize Skills Chart using Chart.js if the canvas element exists
+  /**
+   * Example: Skills Radar Chart with Chart.js
+   */
   const skillsChartCanvas = document.getElementById('skillsChart');
   if (skillsChartCanvas && window.Chart) {
     const ctx = skillsChartCanvas.getContext('2d');
-    const skillsChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'radar',
       data: {
-        labels: ['Leadership', 'Technical Implementation', 'Educational Design', 'Digital Transformation'],
-        datasets: [{
-          label: 'Proficiency Levels',
-          data: [90, 80, 85, 75], // Example proficiency percentages; update as needed
-          backgroundColor: 'rgba(56, 178, 172, 0.2)',
-          borderColor: 'rgba(56, 178, 172, 1)',
-          borderWidth: 2
-        }]
+        labels: [
+          'Leadership & Management',
+          'Technical Implementation',
+          'Educational Design',
+          'Digital Transformation'
+        ],
+        datasets: [
+          {
+            label: 'Proficiency',
+            data: [90, 80, 85, 75], // Example percentages, adjust as needed
+            backgroundColor: 'rgba(56, 178, 172, 0.2)',
+            borderColor: 'rgba(56, 178, 172, 1)',
+            borderWidth: 2
+          }
+        ]
       },
       options: {
         responsive: true,
         scales: {
           r: {
-            angleLines: { display: true },
             suggestedMin: 0,
-            suggestedMax: 100
+            suggestedMax: 100,
+            angleLines: { display: true },
+            grid: { color: '#ccc' },
+            pointLabels: { color: '#333' }
           }
         }
       }
