@@ -555,22 +555,27 @@ footer {
     display: none;
   }
 
-  /* Hero fills the full viewport on mobile */
+  /* Make hero fill the full viewport on mobile */
   #hero {
     position: relative;
     width: 100%;
-    height: 100vh; /* Ensures it fills the screen initially */
-    overflow: hidden; /* No horizontal scroll */
+    height: 100vh; /* fills screen initially */
+    overflow: hidden;
   }
 
+  /* The hero-content flex container
+     ensures text + arrow are stacked and centered */
   .hero-content {
     position: relative;
     width: 100%;
     height: 100%;
-    display: flex; /* We'll absolutely position text/arrow, image is behind */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* vertical centering */
   }
 
-  /* The hero image spans the entire background */
+  /* Hero image behind the text */
   .hero-image {
     position: absolute;
     top: 0;
@@ -579,36 +584,40 @@ footer {
     bottom: 0;
     z-index: 0;
   }
-
   .hero-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  /* Absolutely center the hero text in the middle of the image */
+  /* Hero text on top of the image, centered, smaller margins */
   .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    position: relative;
+    z-index: 1; /* above the image */
     max-width: 90%;
+    text-align: center;
     color: var(--bg-white);
-    z-index: 1; /* Above the image */
+    margin-bottom: 1rem; /* space before arrow */
+  }
+  .hero-text h1 {
+    font-size: 1.75rem; /* reduce slightly for mobile */
+    margin-bottom: 0.5rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
   }
 
-  /* Place scroll indicator at the bottom center */
+  /* Scroll indicator sits below text, also centered */
   .scroll-indicator {
-    position: absolute;
-    left: 50%;
-    bottom: 2rem;
-    transform: translateX(-50%);
-    z-index: 1; /* Above the image */
-    margin: 0;
+    position: relative;
+    z-index: 1;
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    margin-bottom: 1rem; /* add some space at bottom */
   }
 
-  /* Stack Experience text & photo vertically so entire photo is visible */
+  /* Experience section stacks text & photo vertically on mobile */
   .timeline-item {
     flex-direction: column;
   }
