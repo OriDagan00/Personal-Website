@@ -1,7 +1,8 @@
 /* script.js */
 document.addEventListener('DOMContentLoaded', function () {
   /**
-   * Scroll-triggered animations with IntersectionObserver
+   * IntersectionObserver for scroll-triggered animations.
+   * Elements with the 'animate-on-scroll' class will receive the 'in-view' class when visible.
    */
   const observerOptions = { threshold: 0.1 };
   const observer = new IntersectionObserver((entries, obs) => {
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /**
-   * Copy Email to Clipboard
+   * Copy Email to Clipboard Functionality
    */
   const copyButton = document.getElementById('copyEmail');
   if (copyButton) {
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
-   * Scroll Indicator - scroll to Intro Section
+   * Smooth scroll indicator click event to scroll to the Introduction section
    */
   const scrollIndicator = document.querySelector('.scroll-indicator');
   if (scrollIndicator) {
@@ -49,11 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
-   * Form Submission Tracking (Google Analytics event example)
+   * Form submission tracking (for analytics)
    */
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function () {
+      // Example: Track form submission with Google Analytics event
       if (window.gtag) {
         gtag('event', 'contact_form_submission', {
           event_category: 'Contact',
@@ -64,11 +66,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-/* 2. Add skill toggle logic */
-document.addEventListener('DOMContentLoaded', function () {
-  // Existing code for IntersectionObserver, copy email, etc. remains...
+  /**
+   * Example: Parallax effect for Military Service Photo (if applicable)
+   * (Optional: Remove if not needed)
+   */
+  const militaryImage = document.querySelector('.military .timeline-item img');
+  if (militaryImage) {
+    window.addEventListener('scroll', function () {
+      const scrolled = window.pageYOffset;
+      militaryImage.style.transform = 'translateY(' + scrolled * 0.1 + 'px)';
+    });
+  }
 
-  // SKILL TOGGLE LOGIC
+  /**
+   * SKILL TOGGLE LOGIC
+   * Toggles the hidden <div> that contains the skill description.
+   */
   const skillToggles = document.querySelectorAll('.skill-toggle');
   skillToggles.forEach((toggle) => {
     toggle.addEventListener('click', () => {
