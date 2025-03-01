@@ -555,27 +555,29 @@ footer {
     display: none;
   }
 
-  /* Make hero fill the full viewport on mobile */
+  /* Let the hero fill at least the full screen,
+     but allow scrolling if the text is tall */
   #hero {
     position: relative;
     width: 100%;
-    height: 100vh; /* fills screen initially */
+    min-height: 100vh; /* fill at least the viewport */
     overflow: hidden;
   }
 
-  /* The hero-content flex container
-     ensures text + arrow are stacked and centered */
+  /* The hero-content is a column for text + arrow, 
+     centered horizontally, with vertical centering if space allows */
   .hero-content {
     position: relative;
     width: 100%;
-    height: 100%;
+    min-height: 100vh; /* ensures the section is at least full screen height */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* vertical centering */
+    justify-content: center; /* centers text vertically if there's space */
+    padding: 1rem; /* some padding around text */
   }
 
-  /* Hero image behind the text */
+  /* The hero image is behind the text, covering the full area */
   .hero-image {
     position: absolute;
     top: 0;
@@ -584,40 +586,43 @@ footer {
     bottom: 0;
     z-index: 0;
   }
+
   .hero-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  /* Hero text on top of the image, centered, smaller margins */
+  /* The hero text sits above the image (z-index:1),
+     centered, with reduced font size to prevent cutting */
   .hero-text {
     position: relative;
-    z-index: 1; /* above the image */
+    z-index: 1;
     max-width: 90%;
     text-align: center;
     color: var(--bg-white);
     margin-bottom: 1rem; /* space before arrow */
+    overflow-wrap: break-word; /* ensures long words wrap */
   }
   .hero-text h1 {
-    font-size: 1.75rem; /* reduce slightly for mobile */
+    font-size: 1.75rem; 
     margin-bottom: 0.5rem;
   }
   .hero-text p {
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
-  /* Scroll indicator sits below text, also centered */
+  /* Scroll arrow sits below text, also centered */
   .scroll-indicator {
     position: relative;
     z-index: 1;
+    margin-bottom: 1rem;
     font-size: 2rem;
     animation: bounce 2s infinite;
-    margin-bottom: 1rem; /* add some space at bottom */
   }
 
-  /* Experience section stacks text & photo vertically on mobile */
+  /* Experience section: stack text & photo vertically so full image is visible */
   .timeline-item {
     flex-direction: column;
   }
@@ -628,7 +633,7 @@ footer {
   }
   .timeline-photo img {
     width: 100%;
-    height: auto; /* let image scale naturally */
+    height: auto; 
     object-fit: cover;
   }
 }
