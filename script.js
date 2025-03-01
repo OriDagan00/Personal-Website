@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     threshold: 0.2
   };
 
-  const observer = new IntersectionObserver((entries, observer) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
@@ -22,9 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
 // Copy email to clipboard function
 function copyEmail() {
   const emailText = document.getElementById('copyEmail').innerText;
-  navigator.clipboard.writeText(emailText).then(() => {
-    alert("Email address copied to clipboard!");
-  }).catch(err => {
-    alert("Failed to copy email: " + err);
-  });
+  navigator.clipboard.writeText(emailText)
+    .then(() => {
+      alert("Email address copied to clipboard!");
+    })
+    .catch(err => {
+      alert("Failed to copy email: " + err);
+    });
 }
