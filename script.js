@@ -1,58 +1,103 @@
 /* script.js */
 
-// Wait for the DOM to load before executing scripts
-document.addEventListener('DOMContentLoaded', function() {
-  // Set up IntersectionObserver for scroll-triggered animations
-  const observerOptions = {
-    threshold: 0.2
-  };
-
+/**
+ * DOMContentLoaded ensures that the script runs after the DOM is fully loaded.
+ */
+document.addEventListener('DOMContentLoaded', function () {
+  /* IntersectionObserver for scroll-triggered animations.
+     Elements with the 'animate-on-scroll' class will receive the 'in-view' class when visible.
+  */
+  const observerOptions = { threshold: 0.1 };
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('visible');
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  // Observe timeline and career timeline items
-  const timelineItems = document.querySelectorAll('.timeline-item, .career-timeline .timeline-item');
-  timelineItems.forEach(item => observer.observe(item));
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
 
-  // Email "Copy to Clipboard" functionality
-  const copyBtn = document.getElementById('copyEmail');
-  if(copyBtn) {
-    copyBtn.addEventListener('click', function() {
-      const emailText = document.getElementById('emailText').textContent;
+  // Copy Email to Clipboard Functionality
+  const copyButton = document.getElementById('copyEmail');
+  if (copyButton) {
+    copyButton.addEventListener('click', function () {
+      const emailText = document.getElementById('emailCopy').innerText;
       navigator.clipboard.writeText(emailText)
-      .then(() => {
-        copyBtn.textContent = 'Copied!';
-        setTimeout(() => {
-          copyBtn.textContent = 'Copy';
-        }, 2000);
-      })
-      .catch(err => {
-        console.error('Failed to copy email: ', err);
-      });
+        .then(() => {
+          copyButton.innerText = 'Copied!';
+          setTimeout(() => { copyButton.innerText = 'Copy'; }, 2000);
+        })
+        .catch(err => {
+          console.error('Failed to copy email: ', err);
+        });
     });
   }
 
-  // Contact form submission handling
+  // Smooth scroll indicator click event to scroll to the Introduction section
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', () => {
+      const nextSection = document.getElementById('intro');
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Form submission tracking (for analytics)
   const contactForm = document.getElementById('contactForm');
-  if(contactForm) {
-    contactForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      // Gather form data
-      const formData = new FormData(contactForm);
-      // For production, replace this with an AJAX call to your backend service.
-      alert('Thank you for your message! We will get back to you shortly.');
-      contactForm.reset();
-      // Example: Trigger goal tracking with Google Analytics
-      gtag('event', 'form_submission', {
-        'event_category': 'Contact',
-        'event_label': 'Contact Form Submitted'
-      });
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      // Example: Track form submission with Google Analytics event
+      if (window.gtag) {
+        gtag('event', 'contact_form_submission', {
+          'event_category': 'Contact',
+          'event_label': 'Contact Form'
+        });
+      }
+      // The form submission is handled via mailto
+    });
+  }
+
+  // Example: Parallax effect for Military Service Photo (if applicable)
+  const militaryImage = document.querySelector('.military .timeline-item img');
+  if (militaryImage) {
+    window.addEventListener('scroll', function () {
+      const scrolled = window.pageYOffset;
+      militaryImage.style.transform = 'translateY(' + scrolled * 0.1 + 'px)';
+    });
+  }
+
+  // Initialize Skills Chart using Chart.js if the canvas element exists
+  const skillsChartCanvas = document.getElementById('skillsChart');
+  if (skillsChartCanvas && window.Chart) {
+    const ctx = skillsChartCanvas.getContext('2d');
+    const skillsChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Leadership', 'Technical Implementation', 'Educational Design', 'Digital Transformation'],
+        datasets: [{
+          label: 'Proficiency Levels',
+          data: [90, 80, 85, 75], // Example proficiency percentages; update as needed
+          backgroundColor: 'rgba(56, 178, 172, 0.2)',
+          borderColor: 'rgba(56, 178, 172, 1)',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          r: {
+            angleLines: { display: true },
+            suggestedMin: 0,
+            suggestedMax: 100
+          }
+        }
+      }
     });
   }
 });
