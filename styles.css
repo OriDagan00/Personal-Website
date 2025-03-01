@@ -555,33 +555,43 @@ footer {
     display: none;
   }
 
-  /* Let hero text & arrow center in the viewport */
+  /* Make hero fill the viewport height on mobile */
   #hero {
-    height: auto;
+    height: 100vh;
     position: relative;
-    min-height: 100vh; /* ensures it still fills the screen initially */
   }
 
+  /* Stack hero content but keep the image filling the background */
   .hero-content {
     flex-direction: column;
+    height: 100%;
   }
 
+  .hero-image {
+    flex: 1;
+  }
+
+  /* Absolutely center the hero text */
   .hero-text {
-    position: static;
-    top: auto;
-    right: auto;
-    transform: none;
-    margin: 2rem auto;
-    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     max-width: 90%;
+    text-align: center;
   }
 
+  /* Move scroll indicator below the text, also centered */
   .scroll-indicator {
-    margin: 1rem auto 0;
-    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    margin: 0; /* remove default margin so it's truly centered */
+    display: inline-block;
   }
 
-  /* Stack Experience text & photo vertically */
+  /* Experience section stacks text & photo vertically */
   .timeline-item {
     flex-direction: column;
   }
@@ -596,3 +606,4 @@ footer {
     object-fit: cover;
   }
 }
+
