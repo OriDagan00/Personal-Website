@@ -1,45 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mission-Driven Leader Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <!-- Analytics Scripts -->
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Portfolio - Ori Dagan</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Analytics 4 snippet (replace GA_MEASUREMENT_ID with your ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', 'GA_MEASUREMENT_ID');
   </script>
-  <!-- LinkedIn Insight Tag -->
-  <script type="text/javascript">
-    _linkedin_partner_id = "YOUR_LINKEDIN_PARTNER_ID";
-    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-    (function(){
-      var s = document.getElementsByTagName("script")[0];
-      var b = document.createElement("script");
-      b.type = "text/javascript"; b.async = true;
-      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-      s.parentNode.insertBefore(b, s);
-    })();
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none;" alt=""
-         src="https://px.ads.linkedin.com/collect/?pid=YOUR_LINKEDIN_PARTNER_ID&fmt=gif" />
-  </noscript>
+  <!-- Chart.js library for skills chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Header & Navigation -->
+  <!-- Navigation Header -->
   <header>
-    <nav>
-      <ul>
-        <li><a href="#hero">Home</a></li>
+    <nav class="container">
+      <a href="#hero" class="logo">Ori Dagan</a>
+      <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -47,286 +29,263 @@
       </ul>
     </nav>
   </header>
-  
-  <!-- Main Content -->
-  <main>
-    <!-- Hero Section -->
-    <section id="hero" class="section hero">
-      <div class="hero-content">
-        <!-- Left: Professional Headshot with Gradient Overlay -->
-        <div class="hero-image">
-          <img src="/assets/headshot.JPG" alt="Professional Headshot" loading="lazy">
-          <div class="gradient-overlay"></div>
-        </div>
-        <!-- Right: Headline, Tagline & Animated Scroll Arrow -->
-        <div class="hero-text">
-          <h1>Mission-Driven Leader in Digital Innovation</h1>
-          <p>Transforming organizations through leadership, technology, and education</p>
-          <div class="scroll-indicator">
-            <span class="arrow">&#x2193;</span>
-          </div>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <!-- Left: Professional Headshot (Image 1) with gradient overlay -->
+      <div class="hero-image">
+        <picture>
+          <source srcset="/assets/image1.webp" type="image/webp" />
+          <img src="/assets/image1.jpg" alt="Professional Headshot" loading="lazy" />
+        </picture>
+        <div class="overlay"></div>
+      </div>
+      <!-- Right: Headline and Tagline -->
+      <div class="hero-text">
+        <h1>Mission-Driven Leader in Digital Innovation</h1>
+        <p>Transforming organizations through leadership, technology, and education</p>
+        <div class="scroll-indicator animate-on-scroll">
+          <span>&#x2193;</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Brief Introduction Section -->
-    <section id="introduction" class="section introduction">
-      <div class="intro-grid">
-        <div class="intro-item">
-          <img src="/assets/military-icon.png" alt="Military Leadership Icon" loading="lazy">
-          <h3>Military Leadership</h3>
-          <p>Proven leadership honed through rigorous military training and experience.</p>
-          <a href="#experience">Learn More</a>
-        </div>
-        <div class="intro-item">
-          <img src="/assets/tech-icon.png" alt="Technological Expertise Icon" loading="lazy">
-          <h3>Technological Expertise</h3>
-          <p>Innovative strategies and technical solutions driving digital transformation.</p>
-          <a href="#experience">Learn More</a>
-        </div>
-        <div class="intro-item">
-          <img src="/assets/education-icon.png" alt="Educational Innovation Icon" loading="lazy">
-          <h3>Educational Innovation</h3>
-          <p>Commitment to fostering learning and development in educational settings.</p>
-          <a href="#experience">Learn More</a>
-        </div>
+  <!-- Brief Introduction -->
+  <section id="intro" class="container">
+    <div class="intro-container">
+      <div class="intro-item animate-on-scroll">
+        <img src="/assets/icon-military.svg" alt="Military Leadership Icon" loading="lazy" />
+        <h3>Military Leadership</h3>
+        <p>Leading with discipline and strategic vision.</p>
+        <a href="#experience">Learn More</a>
       </div>
-    </section>
+      <div class="intro-item animate-on-scroll">
+        <img src="/assets/icon-tech.svg" alt="Technological Expertise Icon" loading="lazy" />
+        <h3>Technological Expertise</h3>
+        <p>Innovating and implementing cutting-edge solutions.</p>
+        <a href="#experience">Learn More</a>
+      </div>
+      <div class="intro-item animate-on-scroll">
+        <img src="/assets/icon-education.svg" alt="Educational Innovation Icon" loading="lazy" />
+        <h3>Educational Innovation</h3>
+        <p>Transforming learning through technology and leadership.</p>
+        <a href="#about">Learn More</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Call to Action Section -->
-    <section id="cta" class="section cta">
+  <!-- Call To Action -->
+  <section id="cta">
+    <div class="cta-container container">
       <h2>Ready to collaborate?</h2>
-      <a href="#contact" class="btn">Contact Me</a>
+      <a href="#contact" class="btn-contact">Contact Me</a>
       <div class="contact-info">
         <p>Email: <a href="mailto:oridagan00@gmail.com">oridagan00@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/ori-dagan-33637831a" target="_blank">Profile</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/ori-dagan-33637831a" target="_blank" rel="noopener">View Profile</a></p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="section about">
+  <!-- About Section -->
+  <section id="about" class="container">
+    <div class="section-header">
       <h2>About Me</h2>
-      <!-- Personal Story / Timeline -->
-      <div class="timeline">
+    </div>
+    <div class="about-content">
+      <!-- Personal Story Timeline -->
+      <div class="timeline animate-on-scroll">
         <div class="timeline-item">
-          <div class="timeline-year">2010</div>
+          <div class="timeline-date">YYYY - EMIS</div>
           <div class="timeline-content">
-            <h3>Eastern Mediterranean International School</h3>
-            <p>Completed IB diploma with focus on economics and global politics.</p>
+            <h3>Role/Position</h3>
+            <p>Key achievements and milestones in my career progression.</p>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2011 - 2015</div>
-          <div class="timeline-content">
-            <h3>Israeli Defense Forces</h3>
-            <p>Commissioned as ICT Officer, managing critical communication systems.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2015 - 2019</div>
-          <div class="timeline-content">
-            <h3>8200-Signal Intelligence Unit</h3>
-            <p>Enhanced technical expertise in advanced intelligence operations.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2019 - Present</div>
-          <div class="timeline-content">
-            <h3>Eastern Mediterranean International School</h3>
-            <p>Boarding School Social Guide and Digital Transformation Manager.</p>
-          </div>
-        </div>
+        <!-- Additional timeline items can be added here -->
       </div>
       <!-- Values and Mission -->
-      <div class="mission">
-        <blockquote class="mission-quote">
-          "Empowering teams through innovation, leadership, and continuous learning."
+      <div class="values-mission animate-on-scroll">
+        <blockquote class="mission-statement">
+          "Empowering teams through leadership, innovation, and service."
         </blockquote>
         <p>
-          My mission is to bridge innovation, education, and leadership to drive positive change in every organization I serve.
+          My mission is to inspire and drive change in every organization I serve, blending discipline with creativity and strategic thinking.
         </p>
       </div>
       <!-- Professional Philosophy Cards -->
-      <div class="philosophy-cards">
+      <div class="philosophy-cards animate-on-scroll">
         <div class="card">
-          <img src="/assets/leadership-icon.png" alt="Leadership Icon" loading="lazy">
+          <img src="/assets/icon-leadership.svg" alt="Leadership Icon" loading="lazy" />
           <h3>Leadership</h3>
           <p>Balancing vision, accountability, and empathy.</p>
         </div>
         <div class="card">
-          <img src="/assets/innovation-icon.png" alt="Innovation Icon" loading="lazy">
+          <img src="/assets/icon-innovation.svg" alt="Innovation Icon" loading="lazy" />
           <h3>Innovation</h3>
           <p>Pursuing continuous improvement and fresh perspectives.</p>
         </div>
         <div class="card">
-          <img src="/assets/community-icon.png" alt="Service & Community Icon" loading="lazy">
+          <img src="/assets/icon-service.svg" alt="Service Icon" loading="lazy" />
           <h3>Service & Community</h3>
-          <p>Nurturing growth and giving back to the community.</p>
+          <p>Nurturing growth and giving back.</p>
         </div>
         <div class="card">
-          <img src="/assets/learning-icon.png" alt="Continuous Learning Icon" loading="lazy">
+          <img src="/assets/icon-learning.svg" alt="Continuous Learning Icon" loading="lazy" />
           <h3>Continuous Learning</h3>
-          <p>Every challenge is an opportunity to grow and innovate.</p>
+          <p>Every challenge is an opportunity to grow.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Experience & Career Overview Section -->
-    <section id="experience" class="section experience">
+  <!-- Experience & Career Overview -->
+  <section id="experience" class="container">
+    <div class="section-header">
       <h2>Experience & Career Overview</h2>
-      <!-- Career Timeline -->
-      <div class="career-timeline">
-        <div class="timeline-item">
-          <div class="timeline-logo">
-            <img src="/assets/IDF-logo.png" alt="IDF Logo" loading="lazy">
-          </div>
-          <div class="timeline-details">
-            <h3>ICT Officer, Israeli Defense Forces</h3>
-            <p class="date-location">2011 - 2015 | Israel</p>
-            <ul>
-              <li>Managed critical communication systems.</li>
-              <li>Oversaw operational planning under high-pressure conditions.</li>
-            </ul>
-          </div>
+    </div>
+    <div class="experience-timeline animate-on-scroll">
+      <!-- Digital Transformation & Automation Manager at EMIS -->
+      <div class="timeline-item">
+        <div class="timeline-logo">
+          <img src="/assets/logo-emis.webp" alt="EMIS Logo" loading="lazy" />
         </div>
-        <div class="timeline-item">
-          <div class="timeline-logo">
-            <img src="/assets/8200.png" alt="8200-Signal Intelligence Unit Logo" loading="lazy">
-          </div>
-          <div class="timeline-details">
-            <h3>Classified Position, 8200-Signal Intelligence Unit</h3>
-            <p class="date-location">2015 - 2019 | Israel</p>
-            <ul>
-              <li>Enhanced technical expertise in intelligence operations.</li>
-              <li>Implemented advanced technological solutions.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-logo">
-            <img src="/assets/EMIS-logo.png" alt="EMIS Logo" loading="lazy">
-          </div>
-          <div class="timeline-details">
-            <h3>Boarding School Social Guide, EMIS</h3>
-            <p class="date-location">2019 - Present | Tel Aviv</p>
-            <ul>
-              <li>Mentored a diverse student community.</li>
-              <li>Implemented student support initiatives.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-logo">
-            <img src="/assets/EMIS-logo.png" alt="EMIS Logo" loading="lazy">
-          </div>
-          <div class="timeline-details">
-            <h3>Digital Transformation & Automation Manager, EMIS</h3>
-            <p class="date-location">2019 - Present | Tel Aviv</p>
-            <ul>
-              <li>Spearheaded a digital transformation project.</li>
-              <li>Developed internal applications to streamline workflows.</li>
-            </ul>
-          </div>
+        <div class="timeline-details">
+          <h3>Digital Transformation & Automation Manager, EMIS</h3>
+          <span class="timeline-date">YYYY - YYYY</span>
+          <p>Developed an internal application to streamline workflows. Led digital transformation initiatives and mentored teams.</p>
         </div>
       </div>
-      <!-- Military Service Highlight -->
-      <div class="military-highlight">
-        <h3>Military Service</h3>
-        <p>Rank: Captain (Reserves)</p>
-        <div class="military-roles">
-          <div class="military-role">
-            <img src="/assets/ICT.png" alt="Combat ICT Officer" loading="lazy">
-            <p>Combat ICT Officer</p>
-          </div>
-          <div class="military-role">
-            <img src="/assets/8200.png" alt="8200-Signal Intelligence Unit" loading="lazy">
-            <p>8200-Signal Intelligence Unit</p>
-          </div>
+      <!-- Military Service Highlight: ICT Officer -->
+      <div class="timeline-item military">
+        <div class="timeline-logo">
+          <img src="/assets/logo-ict.svg" alt="ICT Badge" loading="lazy" />
+        </div>
+        <div class="timeline-details">
+          <h3>ICT Officer, Israeli Defense Forces</h3>
+          <span class="timeline-date">YYYY - YYYY</span>
+          <p>Managed critical communication systems and operational planning under high-pressure conditions.</p>
         </div>
       </div>
-    </section>
+      <!-- Military Service Highlight: 8200-Signal Intelligence Unit -->
+      <div class="timeline-item military">
+        <div class="timeline-logo">
+          <img src="/assets/logo-8200.svg" alt="8200 Unit Logo" loading="lazy" />
+        </div>
+        <div class="timeline-details">
+          <h3>Classified Position, 8200-Signal Intelligence Unit</h3>
+          <span class="timeline-date">YYYY - YYYY</span>
+          <p>Gained exposure to cutting-edge technology and intelligence initiatives.</p>
+        </div>
+      </div>
+      <!-- Boarding School Social Guide at EMIS -->
+      <div class="timeline-item">
+        <div class="timeline-logo">
+          <img src="/assets/logo-emis.webp" alt="EMIS Logo" loading="lazy" />
+        </div>
+        <div class="timeline-details">
+          <h3>Boarding School Social Guide, EMIS</h3>
+          <span class="timeline-date">YYYY - YYYY</span>
+          <p>Mentored students and fostered a community-focused environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Skills & Expertise Section -->
-    <section id="skills" class="section skills">
+  <!-- Skills & Expertise -->
+  <section id="skills" class="container">
+    <div class="section-header">
       <h2>Skills & Expertise</h2>
-      <!-- Technical Skills Visualization -->
+    </div>
+    <div class="skills-container animate-on-scroll">
+      <!-- Technical Skills Visualization (Example using a radar chart) -->
       <div class="skills-chart">
-        <!-- Placeholder: Insert your radial chart or skill web visualization -->
-        <canvas id="skillsChart" aria-label="Technical skills chart" role="img"></canvas>
+        <canvas id="skillsChart" width="300" height="300"></canvas>
       </div>
-      <!-- Tools & Technologies -->
+      <!-- Tools & Technologies Icon Grid -->
       <div class="tools-grid">
-        <div class="tool">
-          <img src="/assets/tool1.png" alt="Tool 1" loading="lazy">
-          <p>Advanced</p>
+        <div class="tool-item">
+          <img src="/assets/tool-icon1.svg" alt="Tool 1" loading="lazy" />
+          <span>Tool 1</span>
         </div>
-        <div class="tool">
-          <img src="/assets/tool2.png" alt="Tool 2" loading="lazy">
-          <p>Intermediate</p>
+        <div class="tool-item">
+          <img src="/assets/tool-icon2.svg" alt="Tool 2" loading="lazy" />
+          <span>Tool 2</span>
         </div>
-        <!-- Add additional tool icons as needed -->
+        <!-- Add more tool items as needed -->
       </div>
       <!-- Certifications -->
       <div class="certifications">
-        <div class="cert-card">
-          <img src="/assets/IBDP.jpg" alt="IBDP Bilingual Diploma" loading="lazy">
-          <h3>IBDP Bilingual Diploma</h3>
-          <p>Issued by Eastern Mediterranean International School</p>
-          <p>Date: 2010</p>
+        <div class="cert-card animate-on-scroll">
+          <img src="/assets/logo-ib.svg" alt="IB Logo" loading="lazy" />
+          <div class="cert-details">
+            <h4>IBDP Bilingual Diploma</h4>
+            <span>YYYY</span>
+            <p>Description of certification and its relevance.</p>
+          </div>
         </div>
         <!-- Add additional certification cards as needed -->
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-      <h2>Contact</h2>
-      <div class="contact-container">
-        <!-- Contact Form -->
-        <form id="contactForm">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required aria-required="true">
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required aria-required="true">
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <select id="subject" name="subject">
-              <option value="general">General Inquiry</option>
-              <option value="collaboration">Collaboration</option>
-              <option value="services">Services</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
-          </div>
-          <button type="submit" class="btn">Submit</button>
-        </form>
-        <!-- Alternative Contact -->
-        <div class="alt-contact">
-          <p>Email: <span id="emailText">oridagan00@gmail.com</span>
-            <button id="copyEmail" class="copy-btn" aria-label="Copy email to clipboard">Copy</button>
-          </p>
-          <p>LinkedIn: <a href="https://www.linkedin.com/in/ori-dagan-33637831a" target="_blank">www.linkedin.com/in/ori-dagan-33637831a</a></p>
-          <!-- Map Visualization -->
-          <div class="map">
-            <img src="/assets/telaviv-map.png" alt="Map of Tel Aviv area" loading="lazy">
-          </div>
+  <!-- Contact Section -->
+  <section id="contact" class="container">
+    <div class="section-header">
+      <h2>Contact Me</h2>
+    </div>
+    <div class="contact-container animate-on-scroll">
+      <form id="contactForm" action="mailto:oridagan00@gmail.com" method="post" enctype="text/plain">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required aria-required="true" />
         </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required aria-required="true" />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="collaboration">Collaboration</option>
+            <option value="inquiry">Inquiry</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+      <div class="alternative-contact">
+        <p>
+          Email: <span id="emailCopy">oridagan00@gmail.com</span>
+          <button id="copyEmail" aria-label="Copy email to clipboard">Copy</button>
+        </p>
+        <p>
+          LinkedIn: <a href="https://www.linkedin.com/in/ori-dagan-33637831a" target="_blank" rel="noopener">View Profile</a>
+        </p>
       </div>
-    </section>
-  </main>
+      <!-- Map Visualization using Tel Aviv Map (Image 9) -->
+      <div class="map-container">
+        <figure>
+          <picture>
+            <source srcset="/assets/tel-aviv-map.webp" type="image/webp" />
+            <img src="/assets/tel-aviv-map.jpg" alt="Map of Tel Aviv Area" loading="lazy" />
+          </picture>
+          <figcaption>Tel Aviv Area</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Mission-Driven Leader. All rights reserved.</p>
+    <p>&copy; 2025 Ori Dagan. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
