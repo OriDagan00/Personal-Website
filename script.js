@@ -64,43 +64,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /**
-   * Example: Skills Radar Chart with Chart.js
-   */
-  const skillsChartCanvas = document.getElementById('skillsChart');
-  if (skillsChartCanvas && window.Chart) {
-    const ctx = skillsChartCanvas.getContext('2d');
-    new Chart(ctx, {
-      type: 'radar',
-      data: {
-        labels: [
-          'Leadership & Management',
-          'Technical Implementation',
-          'Educational Design',
-          'Digital Transformation'
-        ],
-        datasets: [
-          {
-            label: 'Proficiency',
-            data: [90, 80, 85, 75], // Example percentages, adjust as needed
-            backgroundColor: 'rgba(56, 178, 172, 0.2)',
-            borderColor: 'rgba(56, 178, 172, 1)',
-            borderWidth: 2
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          r: {
-            suggestedMin: 0,
-            suggestedMax: 100,
-            angleLines: { display: true },
-            grid: { color: '#ccc' },
-            pointLabels: { color: '#333' }
-          }
-        }
+/* 2. Add skill toggle logic */
+document.addEventListener('DOMContentLoaded', function () {
+  // Existing code for IntersectionObserver, copy email, etc. remains...
+
+  // SKILL TOGGLE LOGIC
+  const skillToggles = document.querySelectorAll('.skill-toggle');
+  skillToggles.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const description = toggle.nextElementSibling;
+      const isHidden = description.hasAttribute('hidden');
+
+      // Toggle the hidden attribute
+      if (isHidden) {
+        description.removeAttribute('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.querySelector('.skill-arrow').textContent = '–';
+      } else {
+        description.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.querySelector('.skill-arrow').textContent = '+';
       }
     });
-  }
+  });
 });
