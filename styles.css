@@ -548,10 +548,40 @@ footer {
   }
 }
 
-/* Mobile adjustments (max-width: 767px)
-   to stack Experience text & photo vertically 
-   so the image is fully visible without horizontal scrolling */
+/* Mobile (max-width: 767px) */
 @media (max-width: 767px) {
+  /* Hide entire header (including menu) on mobile */
+  header {
+    display: none;
+  }
+
+  /* Let hero text & arrow center in the viewport */
+  #hero {
+    height: auto;
+    position: relative;
+    min-height: 100vh; /* ensures it still fills the screen initially */
+  }
+
+  .hero-content {
+    flex-direction: column;
+  }
+
+  .hero-text {
+    position: static;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin: 2rem auto;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .scroll-indicator {
+    margin: 1rem auto 0;
+    display: block;
+  }
+
+  /* Stack Experience text & photo vertically */
   .timeline-item {
     flex-direction: column;
   }
