@@ -548,34 +548,29 @@ footer {
   }
 }
 
-/* MOBILE STYLES (max-width: 767px) */
+/* MOBILE (max-width: 767px) */
 @media (max-width: 767px) {
   /* Hide entire header (including menu) on mobile */
   header {
     display: none;
   }
 
-  /* Make hero fill the viewport height on mobile */
+  /* Hero fills the full viewport on mobile */
   #hero {
     position: relative;
     width: 100%;
-    height: 100vh; /* ensures it fills the screen initially */
-    overflow: hidden; /* no horizontal scroll */
+    height: 100vh; /* Ensures it fills the screen initially */
+    overflow: hidden; /* No horizontal scroll */
   }
 
-  /* Let hero-content become a column for text + arrow, 
-     while the image is positioned behind it */
   .hero-content {
     position: relative;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* vertically center text & arrow */
+    display: flex; /* We'll absolutely position text/arrow, image is behind */
   }
 
-  /* Position the hero image absolutely so it fills the background */
+  /* The hero image spans the entire background */
   .hero-image {
     position: absolute;
     top: 0;
@@ -591,27 +586,29 @@ footer {
     object-fit: cover;
   }
 
-  /* Center the hero text in front of the image */
+  /* Absolutely center the hero text in the middle of the image */
   .hero-text {
-    position: relative;
-    z-index: 1; /* above the image */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
     max-width: 90%;
-    text-align: center;
     color: var(--bg-white);
-    margin: 0 auto;
-    /* If you want vertical spacing above the text, add margin-top */
+    z-index: 1; /* Above the image */
   }
 
-  /* Place scroll arrow below the text in the same column flow */
+  /* Place scroll indicator at the bottom center */
   .scroll-indicator {
-    position: relative;
-    z-index: 1; /* above the image */
-    margin-top: 1rem; /* some space below text */
-    display: block;
-    text-align: center;
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    z-index: 1; /* Above the image */
+    margin: 0;
   }
 
-  /* Stack Experience text & photo vertically so the entire photo is visible */
+  /* Stack Experience text & photo vertically so entire photo is visible */
   .timeline-item {
     flex-direction: column;
   }
