@@ -60,6 +60,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
+   * CTA Contact Me Button functionality
+   */
+  const ctaEmailButton = document.getElementById('ctaEmailButton');
+  if (ctaEmailButton) {
+    ctaEmailButton.addEventListener('click', function () {
+      window.location.href = "mailto:oridagan00@gmail.com";
+    });
+  }
+
+  /**
    * Example: Parallax effect for Military Service Photo (if applicable)
    * (Optional: Remove if not needed)
    */
