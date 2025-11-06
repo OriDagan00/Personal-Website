@@ -41,10 +41,17 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   const scrollIndicator = document.querySelector('.scroll-indicator');
   if (scrollIndicator) {
-    scrollIndicator.addEventListener('click', () => {
+    const scrollToIntro = () => {
       const nextSection = document.getElementById('intro');
       if (nextSection) {
         nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    scrollIndicator.addEventListener('click', scrollToIntro);
+    scrollIndicator.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToIntro();
       }
     });
   }
@@ -55,7 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const emailMeButton = document.getElementById('emailMeButton');
   if (emailMeButton) {
     emailMeButton.addEventListener('click', function () {
-      window.location.href = "mailto:oridagan00@gmail.com";
+      const subject = encodeURIComponent("Let's collaborate");
+      window.location.href = `mailto:oridagan00@gmail.com?subject=${subject}`;
     });
   }
 
@@ -65,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const ctaEmailButton = document.getElementById('ctaEmailButton');
   if (ctaEmailButton) {
     ctaEmailButton.addEventListener('click', function () {
-      window.location.href = "mailto:oridagan00@gmail.com";
+      const subject = encodeURIComponent("Let's collaborate");
+      window.location.href = `mailto:oridagan00@gmail.com?subject=${subject}`;
     });
   }
 

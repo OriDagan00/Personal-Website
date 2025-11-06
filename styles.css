@@ -27,6 +27,7 @@ body {
   background-color: var(--bg-offwhite);
   color: var(--primary);
   line-height: 1.6;
+  font-size: 17px;
 }
 
 /* Headings */
@@ -213,7 +214,7 @@ nav {
 
 .section-header h2 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .about-content p {
@@ -658,3 +659,35 @@ footer {
     object-fit: cover;
   }
 }
+
+/* Email button (shared primary CTA) */
+.btn-email {
+  font-size: 1.15rem;
+  padding: 0.85em 2em;
+  background: #0072b1;
+  color: white;
+  border: none;
+  border-radius: 2em;
+  box-shadow: 0 2px 8px #0001;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s ease-in-out;
+}
+.btn-email:hover {
+  background: #005c8e;
+}
+.btn-email:active {
+  transform: translateY(1px);
+}
+
+/* Focus-visible styles for accessibility */
+a:focus-visible,
+button:focus-visible,
+.btn-email:focus-visible,
+.skill-toggle:focus-visible {
+  outline: 3px solid #38B2AC;
+  outline-offset: 3px;
+}
+
+/* Slight spacing adjustments */
+.section-header h2 { margin-bottom: 2.5rem; }
+#about, #education, #experience, #skills, #contact { padding: 2.5rem 1rem; }
