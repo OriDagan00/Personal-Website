@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     emailMeButton.addEventListener('click', function () {
       const subject = encodeURIComponent("Let's collaborate");
       window.location.href = `mailto:oridagan00@gmail.com?subject=${subject}`;
-    });
+      });
   }
 
   /**
@@ -113,3 +113,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
