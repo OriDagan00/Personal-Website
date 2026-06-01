@@ -180,3 +180,18 @@ Produce:
 4. What feels outdated, weak, unclear, or generic.
 5. A prioritized improvement plan.
 6. The safest first small change.
+
+## Visual redesign from PNG mockups
+
+The folder `design-references/` contains PNG mockups for the intended improved website UI.
+
+When using these mockups:
+- Treat them as visual references, not as exact production files.
+- Preserve the existing factual content unless Ori explicitly approves content changes.
+- Do not invent dates, roles, education details, skills, or achievements.
+- Implement the design section by section, not all at once.
+- Prioritize layout hierarchy, spacing, typography, responsiveness, and navigation consistency.
+- Match the mockups closely, but prefer clean, maintainable code over pixel-perfect hacks.
+- Do not add dependencies, UI libraries, icon libraries, animation libraries, analytics, or external scripts without approval.
+- If exact colors, fonts, or assets are unclear from the PNGs, state the assumption before editing.
+- After each implementation step, explain which mockup was used, which files changed, and what remains unmatched.
