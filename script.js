@@ -1,116 +1,48 @@
-/* script.js */
 document.addEventListener('DOMContentLoaded', function () {
-  /**
-   * IntersectionObserver for scroll-triggered animations.
-   * Elements with the 'animate-on-scroll' class will receive the 'in-view' class when visible.
-   */
-  const observerOptions = { threshold: 0.1 };
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        obs.unobserve(entry.target);
-      }
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const navItems = document.querySelectorAll('.nav-links a');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function () {
+      const isOpen = navLinks.classList.toggle('is-open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
     });
-  }, observerOptions);
 
-  document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    observer.observe(el);
-  });
-
-  /**
-   * Copy Email to Clipboard Functionality
-   */
-  const copyButton = document.getElementById('copyEmail');
-  if (copyButton) {
-    copyButton.addEventListener('click', () => {
-      const emailText = document.getElementById('emailCopy').innerText;
-      navigator.clipboard.writeText(emailText)
-        .then(() => {
-          copyButton.innerText = 'Copied!';
-          setTimeout(() => { copyButton.innerText = 'Copy'; }, 2000);
-        })
-        .catch(err => {
-          console.error('Failed to copy email: ', err);
-        });
-    });
-  }
-
-  /**
-   * Smooth scroll indicator click event to scroll to the Introduction section
-   */
-  const scrollIndicator = document.querySelector('.scroll-indicator');
-  if (scrollIndicator) {
-    const scrollToIntro = () => {
-      const nextSection = document.getElementById('intro');
-      if (nextSection) {
-        nextSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    };
-    scrollIndicator.addEventListener('click', scrollToIntro);
-    scrollIndicator.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        scrollToIntro();
-      }
-    });
-  }
-
-  /**
-   * Email Me Button functionality
-   */
-  const emailMeButton = document.getElementById('emailMeButton');
-  if (emailMeButton) {
-    emailMeButton.addEventListener('click', function () {
-      const subject = encodeURIComponent("Let's collaborate");
-      window.location.href = `mailto:oridagan00@gmail.com?subject=${subject}`;
+    navItems.forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation');
       });
-  }
-
-  /**
-   * CTA Contact Me Button functionality
-   */
-  const ctaEmailButton = document.getElementById('ctaEmailButton');
-  if (ctaEmailButton) {
-    ctaEmailButton.addEventListener('click', function () {
-      const subject = encodeURIComponent("Let's collaborate");
-      window.location.href = `mailto:oridagan00@gmail.com?subject=${subject}`;
     });
   }
 
-  /**
-   * Example: Parallax effect for Military Service Photo (if applicable)
-   * (Optional: Remove if not needed)
-   */
-  const militaryImage = document.querySelector('.military .timeline-item img');
-  if (militaryImage) {
-    window.addEventListener('scroll', function () {
-      const scrolled = window.pageYOffset;
-      militaryImage.style.transform = 'translateY(' + scrolled * 0.1 + 'px)';
+  if ('IntersectionObserver' in window) {
+    const sections = document.querySelectorAll('main section[id]');
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        navItems.forEach(function (link) {
+          const isCurrent = link.getAttribute('href') === '#' + entry.target.id;
+          if (isCurrent) {
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      });
+    }, {
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: 0.01
+    });
+
+    sections.forEach(function (section) {
+      observer.observe(section);
     });
   }
-
-  /**
-   * SKILL TOGGLE LOGIC
-   * Toggles the hidden <div> that contains the skill description.
-   */
-  const skillToggles = document.querySelectorAll('.skill-toggle');
-  skillToggles.forEach((toggle) => {
-    toggle.addEventListener('click', () => {
-      const description = toggle.nextElementSibling;
-      const isHidden = description.hasAttribute('hidden');
-
-      // Toggle the hidden attribute
-      if (isHidden) {
-        description.removeAttribute('hidden');
-        toggle.setAttribute('aria-expanded', 'true');
-        toggle.querySelector('.skill-arrow').textContent = '–';
-      } else {
-        description.setAttribute('hidden', '');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.querySelector('.skill-arrow').textContent = '+';
-      }
-    });
-  });
 });
-
