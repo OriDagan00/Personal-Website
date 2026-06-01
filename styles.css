@@ -306,7 +306,7 @@ h3 {
   position: relative;
   min-height: calc(100vh - 12rem);
   display: grid;
-  grid-template-columns: minmax(320px, 0.82fr) minmax(360px, 1fr);
+  grid-template-columns: minmax(320px, 0.74fr) minmax(420px, 1.1fr);
   gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
 }
@@ -323,11 +323,13 @@ h3 {
 }
 
 .hero-portrait {
-  align-self: end;
+  align-self: stretch;
   position: relative;
   z-index: 1;
-  min-height: 720px;
-  overflow: hidden;
+  min-height: min(780px, calc(100vh - 7rem));
+  margin-left: clamp(-5rem, -5vw, -2rem);
+  overflow: visible;
+  pointer-events: none;
 }
 
 .hero-portrait::before {
@@ -348,11 +350,15 @@ h3 {
 
 .hero-portrait img {
   position: absolute;
-  inset: auto 0 0 auto;
-  width: min(100%, 640px);
-  height: 92%;
-  object-fit: cover;
-  object-position: 52% 16%;
+  top: clamp(1rem, 5vh, 3.5rem);
+  right: clamp(-9rem, -8vw, -3rem);
+  width: min(62vw, 860px);
+  height: min(88vh, 860px);
+  max-width: none;
+  object-fit: contain;
+  object-position: center top;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 7%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 7%, #000 78%, transparent 100%);
 }
 
 .hero-signature {
