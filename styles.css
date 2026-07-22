@@ -287,6 +287,12 @@ h3 {
   overflow: hidden;
 }
 
+.hero-section::before {
+  background:
+    radial-gradient(circle at 76% 44%, rgba(229, 139, 53, 0.24), transparent 28rem),
+    linear-gradient(104deg, #030910 0%, #030910 37%, #0a0d10 49%, #151310 72%, #151310 100%);
+}
+
 .hero-section::after,
 .skills-section::after,
 .contact-section::after {
@@ -316,6 +322,11 @@ h3 {
   z-index: 2;
 }
 
+.hero-copy h1 {
+  max-width: 7.8em;
+  font-size: clamp(3.5rem, 5.4vw, 5.2rem);
+}
+
 .hero-summary {
   max-width: 36rem;
   margin-bottom: 2rem;
@@ -326,8 +337,8 @@ h3 {
   align-self: stretch;
   position: relative;
   z-index: 1;
-  min-height: min(780px, calc(100vh - 7rem));
-  margin-left: clamp(-5rem, -5vw, -2rem);
+  min-height: min(860px, calc(100vh - 5rem));
+  margin-left: clamp(-6rem, -6vw, -2rem);
   overflow: visible;
   pointer-events: none;
 }
@@ -335,8 +346,8 @@ h3 {
 .hero-portrait::before {
   content: "";
   position: absolute;
-  inset: 18% 4% 0;
-  background: radial-gradient(circle, rgba(229, 139, 53, 0.38), transparent 42%);
+  inset: 16% 3% 0;
+  background: radial-gradient(circle, rgba(229, 139, 53, 0.34), transparent 46%);
   filter: blur(18px);
 }
 
@@ -344,21 +355,23 @@ h3 {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 36%;
-  background: linear-gradient(rgba(3, 9, 16, 0), var(--bg));
+  height: 30%;
+  background: linear-gradient(rgba(3, 9, 16, 0), #030910);
 }
 
 .hero-portrait img {
   position: absolute;
-  top: clamp(1rem, 5vh, 3.5rem);
-  right: clamp(-9rem, -8vw, -3rem);
-  width: min(62vw, 860px);
-  height: min(88vh, 860px);
+  top: -13.25rem;
+  right: clamp(-7rem, -6vw, -1rem);
+  width: min(84vw, 1200px);
+  height: min(112vh, 1200px);
   max-width: none;
   object-fit: contain;
-  object-position: center top;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 7%, #000 78%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 7%, #000 78%, transparent 100%);
+  object-position: 54% top;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 25%, #000 50%, #000 88%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 6%, #000 77%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, transparent 25%, #000 50%, #000 88%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 6%, #000 77%, transparent 100%);
+  mask-composite: intersect;
 }
 
 .hero-signature {
@@ -616,7 +629,8 @@ blockquote {
     gap: 2.4rem;
   }
 
-  h1 {
+  .hero-copy h1 {
+    max-width: 10.8em;
     font-size: clamp(3.6rem, 14vw, 5.2rem);
   }
 
@@ -630,14 +644,15 @@ blockquote {
 
   .hero-portrait {
     order: -1;
-    min-height: 430px;
-    margin: -1rem -1.1rem -8rem 5rem;
+    min-height: 610px;
+    margin: -1rem -1.1rem -11rem 4rem;
   }
 
   .hero-portrait img {
+    top: 1rem;
     width: 100%;
     height: 100%;
-    object-position: 53% 16%;
+    object-position: 55% top;
   }
 
   .hero-copy {
@@ -700,8 +715,8 @@ blockquote {
   }
 
   .hero-portrait {
-    min-height: 390px;
-    margin-left: 4rem;
+    min-height: 570px;
+    margin-left: 0;
   }
 
   .primary-button {
