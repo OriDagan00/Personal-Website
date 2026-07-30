@@ -100,6 +100,11 @@ button:focus-visible {
   backdrop-filter: blur(16px);
 }
 
+body.nav-open .site-header {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 .site-nav {
   width: min(var(--max), calc(100% - 4rem));
   margin: 0 auto;
