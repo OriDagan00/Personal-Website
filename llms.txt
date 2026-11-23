@@ -1,0 +1,10 @@
+# Ori Dagan
+
+> Professional portfolio of Ori Dagan, covering digital transformation, automation, AI-assisted workflows, operations, and education. The portfolio welcomes inquiries about consulting and collaboration.
+
+## Portfolio
+
+- [Portfolio homepage](https://oridagan-personal-website.vercel.app/): Overview and professional background.
+- [Experience](https://oridagan-personal-website.vercel.app/#experience): Roles and responsibilities, including internal applications and workflow improvement at EMIS.
+- [Skills and education](https://oridagan-personal-website.vercel.app/#skills): Capabilities in digital systems, operations, and education.
+- [Contact](https://oridagan-personal-website.vercel.app/#contact): How to get in touch about consulting or collaboration.
